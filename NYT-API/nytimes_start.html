@@ -91,6 +91,22 @@
         pageNumber = 0;
         fetchResults(e);
       }
+      nextBtn.addEventListener("click", nextPage);
+      previousBtn.addEventListener("click", previousPage);
+
+      function nextPage(e) {
+        pageNumber++;
+        fetchResults(e);
+      }
+
+      function previousPage(e) {
+        if (pageNumber > 0) {
+          pageNumber--;
+        } else {
+          return;
+        }
+        fetchResults(e);
+      }
 
       function fetchResults(e) {
         // Use preventDefault() to stop the form submitting
@@ -123,7 +139,7 @@
             displayResults(json);
           });
       }
-      
+
       function displayResults(json) {
         while (section.firstChild) {
           section.removeChild(section.firstChild);
